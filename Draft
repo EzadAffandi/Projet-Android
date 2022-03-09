@@ -1,0 +1,14 @@
+http://infort.gautero.fr/index2022.php?action=get&obj=but&id=x //[{"id":1,"specialite":"Réseaux et Télécommunications"}]
+http://infort.gautero.fr/index2022.php?action=get&obj=ue&idBut=x&idUe=y //[{"id":3,"idBut":1,"semestre":1,"numero":1,"idCompetence":1,"parcours":null}]
+http://infort.gautero.fr/index2022.php?action=get&obj=res&idUe=y //[{"id":2,"nom":"Initiation aux réseaux informatiques","cours":"00:00:09","td":"00:00:12","tp":"00:00:24"}]
+http://infort.gautero.fr/index2022.php?action=get&obj=res&idRes=x //description panjang nak mampus
+http://infort.gautero.fr/index2022.php?action=get&obj=sae&idUe=x // ???
+http://infort.gautero.fr/index2022.php?action=get&obj=sae&idRes=x // ???
+
+
+Class to make (maybe) :
+-Executors
+-Executor Service
+-Future
+-URL
+-HttpURLConnection
