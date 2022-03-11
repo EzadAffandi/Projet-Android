@@ -6,9 +6,27 @@ http://infort.gautero.fr/index2022.php?action=get&obj=sae&idUe=x // ???
 http://infort.gautero.fr/index2022.php?action=get&obj=sae&idRes=x // ???
 
 
-Class to make (maybe) :
--Executors
--Executor Service
--Future
--URL
--HttpURLConnection
+//function parse listeBUT
+public void parse(View v) {
+        String toChange;
+        JSONArray jArray;
+        JSONObject jObject;
+        StringBuilder toShow;
+
+        toChange= input.getText().toString();
+        toShow= new StringBuilder("");
+
+        try {
+            jArray= new JSONArray(toChange);
+            for (int i= 0; i< jArray.length(); i++) {
+                jObject= jArray.getJSONObject(i);
+                toShow.append(jObject.getString("specialite"));
+                toShow.append("\n");
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        output.setText(toShow.toString());
+    }
