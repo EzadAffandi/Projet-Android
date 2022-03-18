@@ -4,27 +4,24 @@ import org.json.JSONException;
 
 
 public class Functions {
-    public StringBuilder parseListBUT(String input) {
+    public static String[] parseListeBUT(String input) {
 
         JSONArray jArray;
         JSONObject jObject;
-        StringBuilder toShow;
-
-        toShow= new StringBuilder("");
+        String[] listeBUT = {};
 
         try {
             jArray= new JSONArray(input);
             for (int i= 0; i< jArray.length(); i++) {
                 jObject= jArray.getJSONObject(i);
-                toShow.append(jObject.getString("specialite"));
-                toShow.append("\n");
+                listeBUT[i]= jObject.getString("specialite");
             }
 
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return toShow;
+        return listeBUT;
     }
     
      public static int[] parseBUTId(String input) {
