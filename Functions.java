@@ -26,4 +26,23 @@ public class Functions {
         }
         return toShow;
     }
+    
+     public static int[] parseBUTId(String input) {
+        JSONArray jArray;
+        JSONObject jObject;
+        int[] idArray = {};
+
+        try {
+            jArray = new JSONArray(input);
+            for (int i = 0; i < jArray.length(); i++) {
+                jObject = jArray.getJSONObject(i);
+                idArray[i] = jObject.getInt("id");
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return idArray;
+    }
+
 }
