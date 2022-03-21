@@ -1,0 +1,64 @@
+package com.example.but011;
+
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class Functions {
+    private static int id;
+    private static int idCompetence;
+    private static int idUe;
+    private static String specialite;
+    private static String parcours;
+
+    public static int getId(JSONObject jObject) {
+        try {
+            id = jObject.getInt("id");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    public static String getSpecialite(JSONObject jObject) {
+        try {
+            specialite = jObject.getString("specialite");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return specialite;
+    }
+
+    private static int getIdUe(JSONObject jObject) {
+        idUe = jObject.getInt("Id")
+    }
+
+    public static int getIdCompetence(JSONObject jObject) {
+        try {
+            idCompetence = jObject.getInt("idCompetence");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return idCompetence;
+    }
+
+    public static String getSpecialite(JSONObject jObject) {
+        try {
+            specialite = jObject.getString("specialite");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return specialite;
+    }
+    public static String getParcours(JSONObject jObject) {
+        try {
+            parcours = jObject.getString("parcours");
+            if (parcours == "null") {
+                parcours = "Tronc Commun";
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return parcours;
+    }
+}
