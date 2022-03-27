@@ -5,10 +5,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
-public class AllerInfoUe3 implements AdapterView.OnItemClickListener {
-    private SecondPage controleur;
+public class AllerInfoRes implements AdapterView.OnItemClickListener {
+    private PageRessource controleur;
 
-    public AllerInfoUe3(SecondPage c) {
+    public AllerInfoRes(PageRessource c) {
         controleur = c;
     }
 
@@ -16,14 +16,13 @@ public class AllerInfoUe3 implements AdapterView.OnItemClickListener {
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent action;
         String v;
-        Integer id;
 
         Toast.makeText(view.getContext(), "Item à la position " +
                 Integer.toString(i), Toast.LENGTH_SHORT);
         v = ((String) adapterView.getItemAtPosition(i)).toString();
-        action = new Intent(controleur, PageRessource.class);
+        action = new Intent(controleur, DescriptionRes.class);
         action.putExtra("titre", v);
-        action.putExtra("idUe",String.valueOf(controleur.listeUe3.get(i).getId()));
+        action.putExtra("idRes",String.valueOf(controleur.listeRes.get(i).getId()));
         controleur.startActivity(action);
 
 

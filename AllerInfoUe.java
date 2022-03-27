@@ -11,9 +11,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class AllerInfoUe2 implements AdapterView.OnItemClickListener {
+public class AllerInfoUe implements AdapterView.OnItemClickListener {
     private SecondActivity controleur;
-    public AllerInfoUe2 (SecondActivity c) { controleur= c; }
+    public AllerInfoUe (SecondActivity c) { controleur= c; }
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Intent action;
@@ -23,13 +23,14 @@ public class AllerInfoUe2 implements AdapterView.OnItemClickListener {
         Toast.makeText(view.getContext(), "Item à la position " +
                 Integer.toString(i), Toast.LENGTH_SHORT);
         v= ((String)adapterView.getItemAtPosition(i)).toString();
-        action= new Intent(controleur, PageRessource.class);
-        action.putExtra("titre",v);
-        action.putExtra("idUe",String.valueOf(controleur.listeUe2.get(i).getId()));
-        controleur.startActivity(action);
+            action= new Intent(controleur, PageRessource.class);
+            action.putExtra("titre",v);
+            action.putExtra("idUe",String.valueOf(controleur.listeUe1.get(i).getId()));
+            controleur.startActivity(action);
 
 
 
 
     }
 }
+
