@@ -1,4 +1,4 @@
-package com.example.but011;
+package com.example.but05;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
     private Future<String> todo; //Action sur le serveur
     private Button buttonBut; //Le button pour fait apparaitre tous le BUTs
     private ArrayAdapter<String> aaf; //Controlleur
-    public HashMap<String, Integer> arrayBUT;
-    //private ArrayList<Integer> arrayId;
+    private JSONArray t;
+    private JSONObject o;
+    public ArrayList<But> listeBut=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +59,10 @@ public class MainActivity extends AppCompatActivity {
         registerForContextMenu(vl);    // On associe un menu contextuel à la liste
     }
 
-    public void listeBut(View v) {
+    public void listeBut(View v) throws JSONException {
         String s;
         URL u;
+
 
         s = inputURL;
 
@@ -81,16 +87,16 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         // On ajout à la liste
-
-
+        t= new JSONArray(s);
         if (hasClicked!=true) {
-            //arrayBut=Functions.parseListeBUT(s);
-            arrayBUT= Functions.parseListeBUT(s);
-            //arrayId= Functions.parseBUTId(s);
-            for(String r : arrayBUT.keySet()) {
-                lf.add(String.valueOf(r));
-                aaf.notifyDataSetChanged();
+            for (int i=0;i<t.length();i++){
+            o=t.getJSONObject(i);
+            listeBut.add(new But(Functions.getId(o),Functions.getSpecialite(o)));
             }
+            for(int i=0;i<listeBut.size();i++){
+                lf.add(listeBut.get(i).getSpecialite());
+            }
+            aaf.notifyDataSetChanged();
             hasClicked=true;
         } else {
             Toast.makeText(getApplicationContext(),
@@ -100,10 +106,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public HashMap<String, Integer> getArrayBUT() {
-        return this.arrayBUT;
+    public JSONArray getJsonArrayFromMain() throws JSONException {
+        return this.t;
     }
-
     public Future<String> lireURL(URL u) {
         return exe.submit(() -> {
             URLConnection c;
